@@ -1,0 +1,15 @@
+{
+  "name": "chatgpt-interface-rag-react",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
+    "start-backend": "uvicorn backend.app.main:app --reload",
+    "start-frontend": "cd frontend && npm run start",
+    "build": "cd frontend && npm run build",
+    "test": "cd frontend && npm run test"
+  }
+}

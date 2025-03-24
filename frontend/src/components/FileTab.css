@@ -1,0 +1,223 @@
+/* Styling for the table container */
+.file-tab-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff; 
+  border-radius: 8px;
+  overflow: hidden; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+/* Table Headers (column titles) */
+.file-tab-container th {
+  background-color: #f0f0f0; 
+  color: #333; 
+  padding: 12px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  border-top-left-radius: 8px; 
+  border-top-right-radius: 8px; 
+}
+
+/* Table Rows */
+.file-tab-container td {
+  padding: 12px;
+  text-align: center;  
+  font-size: 14px;
+  border-bottom: 1px solid #ddd; 
+}
+
+/* Hover effect for table rows */
+.file-tab-container tr:hover {
+  background-color: #f1f1f1; 
+}
+
+/* Even rows with alternating background color */
+.file-tab-container tr:nth-child(even) {
+  background-color: #fafafa; 
+}
+
+/* File links in the table (file name) */
+.file-tab-container td a {
+  text-decoration: none;
+  color: #007bff; 
+}
+
+.file-tab-container td a:hover {
+  text-decoration: underline; 
+}
+
+/* Button styling inside table cells */
+.file-tab-container button {
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.file-tab-container .start-icon {
+  background-color: #007bff;
+  color: white;
+}
+
+.file-tab-container .start-icon:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.file-tab-container .start-icon:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for the View Details (eye icon) button */
+.file-tab-container .eye-icon {
+  background-color: transparent;
+  font-size: 18px;
+  color: #007bff;
+  border: none;
+  cursor: pointer;
+}
+
+.file-tab-container .eye-icon:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+/* Status icons for processing, done, or not started */
+.file-tab-container .status-icon {
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.file-tab-container .status-icon.⏳ {
+  color: #f39c12; 
+}
+
+.file-tab-container .status-icon.✅ {
+  color: green; 
+}
+
+.file-tab-container .status-icon.❔ {
+  color: #007bff; 
+}
+
+/* Modal for displaying file details */
+.file-details-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Modal Details Styling */
+.file-details-modal h3 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Scrollable Chunks */
+.file-details-modal .chunks-container {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin-top: 10px;
+}
+
+.file-details-modal ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.file-details-modal ul li {
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.file-details-modal ul li:last-child {
+  border-bottom: none;
+}
+
+/* Ensure the column containing the switch is centered */
+.file-tab-container td {
+  padding: 12px;
+  text-align: center; 
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle; 
+}
+
+/* New Styling for the "Enable/Disable" Toggle Switch */
+.file-tab-container .switch {
+  width: 60px;
+  height: 30px;
+  background-color: #ccc; 
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 auto; 
+}
+
+/* When the switch is enabled (Active) */
+.file-tab-container .switch.enabled {
+  background-color: #4CAF50; 
+}
+
+/* When the switch is disabled (Inactive) */
+.file-tab-container .switch.disabled {
+  background-color: #f44336; 
+}
+
+/* Circle inside the switch */
+.file-tab-container .circle {
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  transition: transform 0.3s ease; 
+}
+
+/* When the switch is enabled, the circle moves to the right */
+.file-tab-container .circle.right {
+  transform: translateX(30px); 
+}
+
+/* When the switch is disabled, the circle stays on the left */
+.file-tab-container .circle.left {
+  transform: translateX(0);
+}

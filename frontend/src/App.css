@@ -1,0 +1,77 @@
+/* Overall background for the app */
+.app-container {
+  background: linear-gradient(135deg, #e0e0e0, #f5f5f5); 
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  color: #333; 
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Tab container */
+.tabs {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Tab buttons styling */
+.tabs button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+}
+
+/* Tab buttons hover effect */
+.tabs button:hover {
+  background-color: #0056b3; 
+}
+
+/* Active tab button styling */
+.tabs button:active, .tabs button:focus {
+  background-color: #00aaff; 
+  color: black;
+}
+
+/* Main container for tab content */
+.tab-content {
+  width: 100%;
+  max-width: 900px;
+  background-color: rgba(255, 255, 255, 0.85); 
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  margin-top: 20px;
+}
+
+/* Hover effect for tab content */
+.tab-content:hover {
+  transform: scale(1.02);
+}
+
+/* Styling for the individual content inside the tabs (Chat and FileTab) */
+.chat-container, .file-tab-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Heading styling */
+h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #00aaff; 
+}
