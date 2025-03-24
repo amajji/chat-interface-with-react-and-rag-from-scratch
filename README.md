@@ -31,7 +31,6 @@ The flow works as follows:
 
   - Backend: FastAPI, Uvicorn (Python)
   - Frontend: React, Axios
-  - ML Models: Prophet, Transformer Models (for embeddings and sentiment analysis)
   - Database: SQLite, SQLAlchemy
 
 
