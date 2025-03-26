@@ -1,7 +1,8 @@
-# Ignore virtual environment and folders
+# Ignore virtual environment, folders and files
 chatgptreact/
 node_modules/
 build/
+/backend/app/db/files.db
 
 # Ignore Python bytecode files
 *.pyc

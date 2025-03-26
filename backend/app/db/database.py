@@ -20,7 +20,7 @@ class File(Base):
     take_into_account = Column(String, default="Disable") 
 
 # Create a database engine
-DATABASE_URL = "sqlite:///./files.db"  # SQLite database file
+DATABASE_URL = "sqlite:///./backend/app/db/files.db"  # SQLite database file
 
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
