@@ -16,33 +16,34 @@ Data scientist | [Anass MAJJI](https://www.linkedin.com/in/anass-majji-729773157
 ## :monocle_face: Overview
 
 
-This project provides a real-time Chat Interface powered by Retrieval Augmented Generation (RAG), with both frontend (React) and backend (FastAPI) components. It supports file uploads, document chunking, embedding generation, and querying documents using semantic search.
+This project provides a real-time Chat Interface powered by a custom-built Retrieval Augmented Generation (RAG) pipeline, developed from scratch. It incorporates both frontend (React) and backend (FastAPI) components, supporting file uploads, document chunking, embedding generation, and semantic search for efficient document retrieval.
 
 The system enables plugging any LLM for document retrieval and allows efficient search through a collection of documents. The project includes functionality for document processing and chunk management, stored in an SQLite database.
 
-## 🔧 Features
+## 🌟 Features
 
 The flow works as follows:
 
-1 - File Upload: Allows users to upload documents easily to the backend.
+1. **File Upload** 📤: Allows users to upload documents easily to the backend.
 
-2 - Document Chunking: Automatically splits documents into smaller, manageable chunks for more efficient processing and analysis.
+2. **Document Chunking** ✂️: Automatically splits documents into smaller, manageable chunks for more efficient processing and analysis.
 
-3 - Embedding Generation: Uses transformer models to compute high-quality embeddings for each document chunk.
+3. **Embedding Generation** 🧠: Uses transformer models to compute high-quality embeddings for each document chunk.
 
-4 - Similarity Search: Enables querying of document chunks and returns the most relevant ones based on cosine similarity with the input query.
+4. **Similarity Search** 🔍: Enables querying of document chunks and returns the most relevant ones based on cosine similarity with the input query.
 
-5 - Customizable File Processing: Users can toggle whether files should be considered for processing through the take_into_account flag.
+5. **Customizable File Processing** ⚙️: Users can toggle whether files should be considered for processing through the take_into_account flag.
 
-6 - Database Integration: Uses SQLite and SQLAlchemy for storing file metadata, chunk data, and processing status, ensuring efficient data management and querying.
+6. **Database Integration** 🗄️: Uses SQLite and SQLAlchemy for storing file metadata, chunk data, and processing status, ensuring efficient data management and querying.
 
-7 - RAG System: Developed from scratch, the RAG system allows for flexible integration with any LLM, providing advanced document retrieval and query answering capabilities.
+7. **RAG System** 🔗: Developed from scratch, the RAG system allows for flexible integration with any LLM, providing advanced document retrieval and query answering capabilities.
+
 
 ## 🛠️ Technologies Used
 
-  - Backend: FastAPI, Uvicorn (Python)
-  - Frontend: React, Axios
-  - Database: SQLite, SQLAlchemy
+- **Backend**: FastAPI ⚡️, Uvicorn 🚀 (Python 🐍)
+- **Frontend**: React 🔵, Axios 🌐
+- **Database**: SQLite 🗄️, SQLAlchemy 🔗
 
 
 
