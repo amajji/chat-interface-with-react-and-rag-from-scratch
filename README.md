@@ -20,6 +20,9 @@ This project provides a real-time Chat Interface powered by a custom-built Retri
 
 The system enables plugging any LLM for document retrieval and allows efficient search through a collection of documents. The project includes functionality for document processing and chunk management, stored in an SQLite database.
 
+## :fire: Demo of the Dashboard
+
+
 ## 🌟 Features
 
 The flow works as follows:
@@ -79,13 +82,7 @@ This will:
 The backend will be available at http://127.0.0.1:8000, and the frontend React app will be available at http://localhost:3000.
 
 
-
-## :fire: Demo of the Dashboard
-
-
-
 ## Contributing 🤝
-
 Contributions to this project are welcome! Feel free to submit issues or pull requests for improvements.
 
 ## :mailbox_closed: Contact
