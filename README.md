@@ -3,7 +3,7 @@
 Data scientist | [Anass MAJJI](https://www.linkedin.com/in/anass-majji-729773157/)
 ***
 <p align="center">
-<img src="/static/rag_bot_short.png" alt="RAGBot Logo" />
+<img src="/assets/rag_bot_short.png" alt="RAGBot Logo" />
 </p>
 
 
@@ -55,31 +55,20 @@ git clone https://github.com/amajji/chat-interface-with-react-and-rag-from-scrat
 cd chat-interface-with-react-and-rag-from-scratch
 ```
 
-2. Install Dependencies
-Backend: 
-- Navigate to the backend folder and install the necessary dependencies:
+2. Create a Virtual Environment 
 ```bash
-cd backend
-python -m venv venv
-source venv/bin/activate 
+python -m venv chatbotvenv
+chatbotvenv/Scripts/activate
 ```
 
-- Install required dependencies
+3. Install Backend Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-Frontend:
-Navigate to the frontend folder and install the frontend dependencies:
+4. Install Frontend Dependencies
 ```bash
-cd frontend
 npm install
-```
-
-3. Start the Application
-In the root directory of the project, you can run both the frontend and backend together using concurrently.
-```bash
-npm start
 ```
 
 This will:

@@ -31,8 +31,8 @@ UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 # Define FastAPI app
 app = FastAPI()
 
-# OpenAI API key (securely set your API key, do not hardcode in production)
-openai.api_key = "your-openai-api-key"
+# OpenAI API key
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Allow CORS for all domains (you can limit to specific origins as needed)
 app.add_middleware(
