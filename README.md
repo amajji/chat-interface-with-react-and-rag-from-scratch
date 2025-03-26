@@ -1,7 +1,7 @@
 <h1 align="center">RAGBot: Chat Interface with React and RAG from Scratch</h1>
 
 <p align="center">
-<img src="/static/rag_bot_short.png" alt="RAGBot Logo" width="400" height="400"/>
+<img src="/static/rag_bot_short.png" alt="RAGBot Logo" />
 </p>
 
 Data scientist | [Anass MAJJI](https://www.linkedin.com/in/anass-majji-729773157/)
