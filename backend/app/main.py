@@ -54,32 +54,6 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 # Model initilization
 model = AutoModel.from_pretrained(model_name)
-
-
-async def get_openai_response(file_path, message, doc_chunks, tokenizer, model):
-    try:
-        ## Get the chunks of the file
-        doc_chunks = get_chunks(file_path, tokenizer)
-
-        # This function maps dict_doc_store which contains text chunks with their embeddings
-        dict_map_documents = document_map_embedding(doc_chunks, tokenizer, model)
-
-        # This function compute the embeddings of the input query
-        query_embeddings = query_compute_embeddings(message, tokenizer, model)
-
-        # This function selects the top_k relevent chunks from the vector database based on the score similarity
-        top_k_result = select_top_k_chunks(query_embeddings, dict_map_documents, top_k = 3)
-
-        # Retreive the chunk with the highest score
-        relevent_chunks = retreive_chunks_content(top_k_result, doc_chunks)
-
-        # Generate the response based on the relevent chunks
-        # bot_message = generate_llm_response(message, relevent_chunks)
-
-        return message
-    except Exception as e:
-        print(f"Error calling OpenAI API: {e}")
-        return "Sorry, I couldn't generate a response at the moment."
     
 
 @app.post("/send_message_and_upload/")
@@ -168,10 +142,13 @@ async def send_message_and_upload(
 
         print('---------------------------------------- : ', relevant_chunks)
 
-    # Generate the response using the relevant chunks
-    #bot_response = generate_llm_response(message, relevant_chunks)
+    # try:
+    #     # Generate the response using the relevant chunks
+    #     bot_response = generate_llm_response(message, relevant_chunks)
 
-
+    # except Exception as e:
+    #     print(f"Error calling OpenAI API: {e}")
+    #     return "Sorry, I couldn't generate a response at the moment."
 
 
 
