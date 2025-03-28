@@ -12,7 +12,7 @@ from pydantic import BaseModel
 import asyncio
 import os
 from transformers import AutoTokenizer, AutoModel
-from .rag.rag import get_chunks
+from .rag.rag import get_chunks, document_map_embedding, query_compute_embeddings, select_top_k_chunks, retreive_chunks_content, generate_llm_response
 from .db.database import File, get_db, DATABASE_URL
 import openai 
 import json
@@ -56,16 +56,26 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModel.from_pretrained(model_name)
 
 
-async def get_openai_response(message: str):
+async def get_openai_response(file_path, message, doc_chunks, tokenizer, model):
     try:
-        # # Call OpenAI's API to generate a response for the given message
-        # response = openai.ChatCompletion.create(
-        #     model="gpt-3.5-turbo",  # You can use "gpt-4" if available
-        #     messages=[{"role": "user", "content": message}],
-        #     max_tokens=200
-        # )
-        # # Extract the bot's response from the OpenAI API response
-        # bot_message = response['choices'][0]['message']['content']
+        ## Get the chunks of the file
+        doc_chunks = get_chunks(file_path, tokenizer)
+
+        # This function maps dict_doc_store which contains text chunks with their embeddings
+        dict_map_documents = document_map_embedding(doc_chunks, tokenizer, model)
+
+        # This function compute the embeddings of the input query
+        query_embeddings = query_compute_embeddings(message, tokenizer, model)
+
+        # This function selects the top_k relevent chunks from the vector database based on the score similarity
+        top_k_result = select_top_k_chunks(query_embeddings, dict_map_documents, top_k = 3)
+
+        # Retreive the chunk with the highest score
+        relevent_chunks = retreive_chunks_content(top_k_result, doc_chunks)
+
+        # Generate the response based on the relevent chunks
+        # bot_message = generate_llm_response(message, relevent_chunks)
+
         return message
     except Exception as e:
         print(f"Error calling OpenAI API: {e}")
@@ -78,6 +88,7 @@ async def send_message_and_upload(
     file: Optional[UploadFile] = None,  # Optional file
     db: Session = Depends(get_db),  # Get the database session
 ):
+    doc_chunks = {}
     file_info = None
     if file:
         # Save the uploaded file
@@ -128,11 +139,49 @@ async def send_message_and_upload(
             "take_into_account": 'Disable',
         }
 
+
+
+    # Retrieve only files where take_into_account is set to 'Enable'
+    files = db.query(File).filter(File.take_into_account == "Enable").all()
+
+    if files:
+        for file in files:
+            if file.chunks:
+                chunks_list = json.loads(file.chunks) 
+
+                # Convert the list back into a dictionary
+                doc_chunks[file.filename] = {chunk["chunk_id"]: {"text": chunk["chunk_text"]} for chunk in chunks_list}
+
+        # Compute the embeddings of the user query
+        query_embeddings = query_compute_embeddings(message, tokenizer, model)
+
+        # Map document chunks with their embeddings
+        all_chunks_embeddings = {}
+        for filename, chunks in doc_chunks.items():
+            all_chunks_embeddings[filename] = document_map_embedding(chunks, tokenizer, model)
+
+        # Select the top-k relevant chunks based on query embeddings
+        top_k_result = select_top_k_chunks(query_embeddings, all_chunks_embeddings, top_k=3)
+
+        # Retrieve the content of the top-k relevant chunks
+        relevant_chunks = retreive_chunks_content(top_k_result, doc_chunks)
+
+        print('---------------------------------------- : ', relevant_chunks)
+
+    # Generate the response using the relevant chunks
+    #bot_response = generate_llm_response(message, relevant_chunks)
+
+
+
+
+
+
     # Simulate a bot response (for demonstration purposes)
     # bot_response = f"Bot received: {message}"
 
     # Get OpenAI bot response based on the user message
-    bot_response = await get_openai_response(message)
+    # bot_response = await get_openai_response(message)
+    bot_response = message
 
     # Combine the message and file information (if available) in the response
     return JSONResponse(content={
@@ -158,6 +207,7 @@ async def process_the_file(
     doc_chunks = get_chunks(file_path, tokenizer)
 
     if doc_chunks:
+
         # Convert the chunks dictionary into a list of dictionaries to store in JSON format
         chunks_list = [{"chunk_id": chunk_id, "chunk_text": chunk_data["text"]} for chunk_id, chunk_data in doc_chunks.items()]
 
