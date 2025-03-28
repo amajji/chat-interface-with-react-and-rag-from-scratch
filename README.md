@@ -21,11 +21,21 @@ This project provides a real-time Chat Interface powered by a custom-built Retri
 The system enables plugging any LLM for document retrieval and allows efficient search through a collection of documents. The project includes functionality for document processing and chunk management, stored in an SQLite database.
 
 ## :fire: Demo of the Dashboard
+1. Chat Tab
 
+    Purpose: Users can interact with the system by typing queries.
+
+    Backend Functionality: The backend uses the RAG pipeline to retrieve relevant document chunks from the uploaded files and generates answers based on the information.
 <p align="center">
 <img src="/assets/chat.PNG"  />
 </p>
 
+2. Uploaded Files Tab
+
+    Purpose: Users can upload documents, which will be processed, chunked, and stored in the backend for future retrieval.
+
+    Backend Functionality: The system handles file processing, chunking, and embedding generation to ensure efficient document retrieval when a user queries in the Chat tab.
+    
 <p align="center">
 <img src="/assets/take_into_account.PNG"  />
 </p>

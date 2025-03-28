@@ -1,0 +1,20 @@
+BOARDING PASS
+
+Passenger Name: John Doe
+Flight Number: AB1234
+Departure: New York (JFK)
+Arrival: London (LHR)
+
+Gate: B22
+Boarding Time: 09:30 AM
+Flight Date: March 28, 2025
+Seat: 22A
+Class: Economy
+
+Flight Information:
+Departure Time: 10:00 AM
+Arrival Time: 8:00 PM (Local Time)
+
+Ticket Information:
+Ticket Number: 9876543210
+Reservation Code: X9C3G5

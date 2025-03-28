@@ -140,7 +140,7 @@ function FileTab() {
             <th>Details</th> {/* Moved Details column here */}
             <th>Start Processing</th> {/* Column for the start button */}
             <th>Status</th> {/* Column for the status icon */}
-            <th>Take into Account</th> {/* New column for Enable/Disable */}
+            <th>Take into account</th> {/* New column for Enable/Disable */}
           </tr>
         </thead>
         <tbody>

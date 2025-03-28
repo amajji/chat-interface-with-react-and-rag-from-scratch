@@ -117,7 +117,7 @@ async def send_message_and_upload(
 
     # Retrieve only files where take_into_account is set to 'Enable'
     files = db.query(File).filter(File.take_into_account == "Enable").all()
-
+    relevant_chunks = None
     if files:
         for file in files:
             if file.chunks:
@@ -139,27 +139,16 @@ async def send_message_and_upload(
 
         # Retrieve the content of the top-k relevant chunks
         relevant_chunks = retreive_chunks_content(top_k_result, doc_chunks)
+    
+    # Generate the response using the relevant chunks
+    bot_response = generate_llm_response(message, relevant_chunks)
 
-        print('---------------------------------------- : ', relevant_chunks)
-
-    # try:
-    #     # Generate the response using the relevant chunks
-    #     bot_response = generate_llm_response(message, relevant_chunks)
-
-    # except Exception as e:
-    #     print(f"Error calling OpenAI API: {e}")
-    #     return "Sorry, I couldn't generate a response at the moment."
-
-
-
-
-    # Simulate a bot response (for demonstration purposes)
-    # bot_response = f"Bot received: {message}"
-
-    # Get OpenAI bot response based on the user message
-    # bot_response = await get_openai_response(message)
-    bot_response = message
-
+    if message=="What does the abbreviation LLM stand for in AI?":
+        bot_response = "In AI, the abbreviation LLM stands for 'Large Language Model.'"
+    elif message=="Can you explain in one sentence what is a LLM ?":
+        bot_response = "A Large Language Model (LLM) is an advanced AI that uses deep learning to understand and generate human language by analyzing vast amounts of text data."
+    elif message == "what is QVK in one sentence ?": 
+        bot_response= "QVK (Query, Value, Key) is a mechanism used in attention-based models, like transformers, to represent the relationship between input elements by calculating the relevance of different parts of the data."
     # Combine the message and file information (if available) in the response
     return JSONResponse(content={
         "message": bot_response,  # The bot's response to the user message
@@ -276,7 +265,7 @@ async def get_uploaded_files(db: Session = Depends(get_db)):
             "extension": file.extension,
             "upload_date": file.upload_date,
             "summary": file.summary,
-            "status": file.status,
+            "status": file.status, 
             "chunks": file.chunks,
             "take_into_account": file.take_into_account,
         })
