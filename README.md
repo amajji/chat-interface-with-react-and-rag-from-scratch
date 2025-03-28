@@ -22,6 +22,14 @@ The system enables plugging any LLM for document retrieval and allows efficient 
 
 ## :fire: Demo of the Dashboard
 
+<p align="center">
+<img src="/assets/chat.png" alt="Chat Tab" />
+</p>
+
+<p align="center">
+<img src="/assets/take_into_account.png" alt="File Tab" />
+</p>
+
 
 ## 🌟 Features
 
