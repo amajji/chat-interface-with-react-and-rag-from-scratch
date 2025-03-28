@@ -143,12 +143,6 @@ async def send_message_and_upload(
     # Generate the response using the relevant chunks
     bot_response = generate_llm_response(message, relevant_chunks)
 
-    if message=="What does the abbreviation LLM stand for in AI?":
-        bot_response = "In AI, the abbreviation LLM stands for 'Large Language Model.'"
-    elif message=="Can you explain in one sentence what is a LLM ?":
-        bot_response = "A Large Language Model (LLM) is an advanced AI that uses deep learning to understand and generate human language by analyzing vast amounts of text data."
-    elif message == "what is QVK in one sentence ?": 
-        bot_response= "QVK (Query, Value, Key) is a mechanism used in attention-based models, like transformers, to represent the relationship between input elements by calculating the relevance of different parts of the data."
     # Combine the message and file information (if available) in the response
     return JSONResponse(content={
         "message": bot_response,  # The bot's response to the user message
