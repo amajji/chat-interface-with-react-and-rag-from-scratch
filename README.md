@@ -23,11 +23,11 @@ The system enables plugging any LLM for document retrieval and allows efficient 
 ## :fire: Demo of the Dashboard
 
 <p align="center">
-<img src="/assets/chat.png" alt="Chat Tab" />
+<img src="/assets/chat.PNG" alt="Chat Tab" />
 </p>
 
 <p align="center">
-<img src="/assets/take_into_account.png" alt="File Tab" />
+<img src="/assets/take_into_account.PNG" alt="File Tab" />
 </p>
 
 
