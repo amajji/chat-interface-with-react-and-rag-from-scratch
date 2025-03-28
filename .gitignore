@@ -1,7 +1,7 @@
 # Ignore virtual environment, folders and files
 chatgptreact/
 node_modules/
-app/uploads/*
+/app/uploads/*
 build/
 /backend/app/db/files.db
 
