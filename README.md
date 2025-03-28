@@ -23,19 +23,16 @@ The system enables plugging any LLM for document retrieval and allows efficient 
 ## :fire: Demo of the Dashboard
 1. Chat Tab
 
-    Purpose: Users can interact with the system by typing queries.
+    The Users can interact with the LLM by typing queries. The backend uses the RAG pipeline to retrieve relevant document chunks from the uploaded files and generates answers based on the information.
 
-    Backend Functionality: The backend uses the RAG pipeline to retrieve relevant document chunks from the uploaded files and generates answers based on the information.
 <p align="center">
 <img src="/assets/chat.PNG"  />
 </p>
 
 2. Uploaded Files Tab
 
-    Purpose: Users can upload documents, which will be processed, chunked, and stored in the backend for future retrieval.
+    The Users can upload documents, which will be processed, chunked, and stored in the backend for future retrieval. The system handles file processing, chunking, and embedding generation to ensure efficient document retrieval when a user queries in the Chat tab.
 
-    Backend Functionality: The system handles file processing, chunking, and embedding generation to ensure efficient document retrieval when a user queries in the Chat tab.
-    
 <p align="center">
 <img src="/assets/take_into_account.PNG"  />
 </p>
